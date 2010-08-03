@@ -34,10 +34,10 @@ function ifbd_featured_blog_authors($content='') {
 	    $post_author_name=get_the_author_meta("user_firstname");
 	    $post_author_description=get_the_author_meta("description");
 	    $post_author_url=get_the_author_meta("user_url");
-	    $post_count=get_the_author_posts();
+	    $post_count = get_option('numposts'); // get_the_author_posts();
 	    $html="<div id='avatar'>\n";
 	    $html.="<a href='".$post_author_url."'>\n";
-	    $html.="<img width='80' height='80' class='avatar' src='http://www.gravatar.com/avatar.php?gravatar_id=".md5(get_the_author_email()). "&default=".urlencode($GLOBALS['defaultgravatar'])."&size=80&r=PG' alt='PG'/>\n";
+	    $html.="<img width='80' height='80' class='avatar' src='http://www.gravatar.com/avatar.php?gravatar_id=".md5(get_the_author_email())."&default=".urlencode($GLOBALS['defaultgravatar'])."&size=80&r=PG' alt='PG'/>\n";
 	    $html.="</a>\n";
 	    $html.="<div class='author_bio'>\n";
 	    $html.= $post_author_description."";
@@ -52,15 +52,37 @@ add_filter('the_content', 'ifbd_featured_blog_authors');
 
 // We need some CSS to position the paragraph
 function ifbd_featured_blog_authors_css() {
-	echo "
-	<style type='text/css'>
-	.author_bio{padding:10px;border:#D7D7D7 1px solid;background:#EEE;}
+	echo '
+	<style type="text/css">
+	<!--
+	.author_bio{padding:10px;border:'.get_option('ifbd-fba-border-color').' 1px solid;background-color:'.get_option('ifbd-fba-background-color').';}
 	.avatar {padding: 12px 12px 0pt; float: left;}
 	.bio_post_count{text-align:right;margin-bottom:0;}
+	-->
 	</style>
-	";
+	';
 }
 
 add_action('wp_head', 'ifbd_featured_blog_authors_css');
+
+include 'adminpage.class.php';
+
+$site = new SubPage('settings', 'Featured Blog Authors');
+$site->addParagraph('Used to be just upload and activate, now with it\'s own admin panel! Edit the values below to change the border and background colors of your author box. Use 6 digit hex color values.');
+$site->addTitle('Colors');
+	$site->addInput(array(
+		'id' => 'ifbd-fba-border-color',
+		'label' => 'Border Color',
+		'desc' => 'Change the Border Color (optional)',
+		'standard' => '#D7D7D7',
+		'size' => 'short'
+	));
+	$site->addInput(array(
+		'id' => 'ifbd-fba-background-color',
+		'label' => 'Background Color',
+		'desc' => 'Change the Background Color (optional)',
+		'standard' => '#EEEEEE',
+		'size' => 'short'
+	));
 
 ?>

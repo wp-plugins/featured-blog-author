@@ -3,14 +3,14 @@ Contributors: IFB Design - Don Gilbert
 Donate link: http://ifbdesign.com/donate/
 Tags: blogger, featured, author post
 Requires at least: 2.7
-Tested up to: 2.9.1
-Stable tag: 1.0
+Tested up to: 3.0.1
+Stable tag: 1.1
 
-An upload-and-activate plugin that creates a author profile at the bottom of every post.
+An upload-and-activate plugin that creates a author profile at the bottom of every post. Now with an admin panel for ease of use updating the background and border colors.
 
 == Description ==
 
-An upload-and-activate plugin that creates a author profile at the bottom of every post.
+An upload-and-activate plugin that creates a author profile at the bottom of every post. Now with an admin panel for ease of use updating the background and border colors.
 
 == Installation ==
 
@@ -31,7 +31,8 @@ This should result in the following file structure:
         - featured-bloggers
             | readme.txt
             | screenshot1.png
-            | featured-bloggers.php`
+            | featured-blog-authors.php
+            | adminpage.class.php`
 
 Then just visit your admin area and activate the plugin.
 
@@ -39,7 +40,7 @@ Then just visit your admin area and activate the plugin.
 
 ###Installing The Plugin For WordPress MU###
 
-Install normally, but move **only** the `featured-bloggers.php` to the `mu-plugins` folder. Leave the rest of the files in their normal place.
+Install normally, but move **only** the `featured-blog-authors.php` to the `mu-plugins` folder. Leave the rest of the files in their normal place.
 
 == Frequently Asked Questions ==
 
@@ -50,6 +51,11 @@ None yet!
 1. How the plugin appears on posts/pages.
 
 == ChangeLog ==
+**Version 1.1**
+
+* Added Admin Page.
+* Added ability to change background and border colors.
+
 **Version 1.0**
 
 * Initial release.
