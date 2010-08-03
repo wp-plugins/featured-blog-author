@@ -1,10 +1,10 @@
 === Featured Bloggers ===
-Contributors: IFB Design - Don Gilbert
-Donate link: http://ifbdesign.com/donate/
-Tags: blogger, featured, author post
+Contributors: Don Gilbert
+Donate link: http://dongilbert.net/
+Tags: blogger, featured, author post, author box
 Requires at least: 2.7
 Tested up to: 3.0.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 An upload-and-activate plugin that creates a author profile at the bottom of every post. Now with an admin panel for ease of use updating the background and border colors.
 
@@ -51,7 +51,8 @@ None yet!
 1. How the plugin appears on posts/pages.
 
 == ChangeLog ==
-**Version 1.1**
+
+**Version 1.2**
 
 * Added Admin Page.
 * Added ability to change background and border colors.

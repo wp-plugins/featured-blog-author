@@ -2,15 +2,15 @@
 /*
 **************************************************************************
 Plugin Name:	Featured Blog Authors
-Plugin URI:	http://blog.ifbdesign.com
+Plugin URI:	http://dongilbert.net
 Description:	Creates a featured blogger / author bio box at the bottom of every post.
-Author:		IFB Design - Don Gilbert
-Version:	1.0
-Author URI: 	http://ifbdesign.com
+Author:		Don Gilbert
+Version:	1.2
+Author URI: 	http://dongilbert.net
 
 **************************************************************************
 
-Copyright (C) 2010 IFBDesign
+Copyright (C) 2010 DonGilbert Consulting
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ function ifbd_featured_blog_authors($content='') {
 	    $post_author_name=get_the_author_meta("user_firstname");
 	    $post_author_description=get_the_author_meta("description");
 	    $post_author_url=get_the_author_meta("user_url");
-	    $post_count = get_option('numposts'); // get_the_author_posts();
+	    $post_count = get_the_author_posts();
 	    $html="<div id='avatar'>\n";
 	    $html.="<a href='".$post_author_url."'>\n";
 	    $html.="<img width='80' height='80' class='avatar' src='http://www.gravatar.com/avatar.php?gravatar_id=".md5(get_the_author_email())."&default=".urlencode($GLOBALS['defaultgravatar'])."&size=80&r=PG' alt='PG'/>\n";
