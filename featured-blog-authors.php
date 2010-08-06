@@ -3,9 +3,9 @@
 **************************************************************************
 Plugin Name:	Featured Blog Authors
 Plugin URI:	http://dongilbert.net
-Description:	Creates a featured blogger / author bio box at the bottom of every post.
+Description:	Creates a featured blogger / author bio box at the bottom of every post. It pulls the bio box from the Author Bio on the profile screen. Has an updated admin panel that allows for selecting the color that you want for the border and background via javascript.
 Author:		Don Gilbert
-Version:	1.2
+Version:	1.3
 Author URI: 	http://dongilbert.net
 
 **************************************************************************
@@ -55,7 +55,7 @@ function ifbd_featured_blog_authors_css() {
 	echo '
 	<style type="text/css">
 	<!--
-	.author_bio{padding:10px;border:'.get_option('ifbd-fba-border-color').' 1px solid;background-color:'.get_option('ifbd-fba-background-color').';}
+	.author_bio{padding:10px;border:1px solid #'.get_option('ifbd-fba-border-color').';background-color:#'.get_option('ifbd-fba-background-color').';}
 	.avatar {padding: 12px 12px 0pt; float: left;}
 	.bio_post_count{text-align:right;margin-bottom:0;}
 	-->
@@ -68,21 +68,19 @@ add_action('wp_head', 'ifbd_featured_blog_authors_css');
 include 'adminpage.class.php';
 
 $site = new SubPage('settings', 'Featured Blog Authors');
-$site->addParagraph('Used to be just upload and activate, now with it\'s own admin panel! Edit the values below to change the border and background colors of your author box. Use 6 digit hex color values.');
+$site->addParagraph('Used to be just upload and activate, now with it\'s own admin panel! Edit the values below to change the border and background colors of your author box. Simply click the input box and then use the color picker to select your color.');
 $site->addTitle('Colors');
-	$site->addInput(array(
+	$site->addColorPicker(array(
 		'id' => 'ifbd-fba-border-color',
 		'label' => 'Border Color',
-		'desc' => 'Change the Border Color (optional)',
-		'standard' => '#D7D7D7',
-		'size' => 'short'
+		'desc' => 'Set the Border Color',
+		'standard' => 'D7D7D7',
 	));
-	$site->addInput(array(
+	$site->addColorPicker(array(
 		'id' => 'ifbd-fba-background-color',
 		'label' => 'Background Color',
-		'desc' => 'Change the Background Color (optional)',
-		'standard' => '#EEEEEE',
-		'size' => 'short'
+		'desc' => 'Set the Background Color',
+		'standard' => 'EEEEEE',
 	));
 
 ?>

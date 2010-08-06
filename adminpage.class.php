@@ -7,8 +7,8 @@
  * the WordPress ACP and fill them with forms and stuff.
  * It also handles all the database stuff for you.
  * 
- * @author Markus Thömmes (merguez@semantifiziert.de)
- * @copyright Copyright 2010, Markus Thömmes
+ * @author Markus Thï¿½mmes (merguez@semantifiziert.de)
+ * @copyright Copyright 2010, Markus Thï¿½mmes
  * @version 1.0
  * @since 28.07.2010
  * 
@@ -57,6 +57,27 @@ class AdminPage {
 		);
 		$args = array_merge($default, $args);
 		$args['type'] = 'input';
+		$this->addField($args);
+	}
+		/**
+
+     * Adds an colorpicker field to the current page
+	 *
+	 * Possible keys within $args:
+	 *  > id (string) - This is what you need to get your variable from the database
+	 *  > label (string) - Describes your field very shortly
+	 *  > desc (string) (optional) - Further description for this element
+	 *  > standard (string) (optional) - This is the standard value of your colorpicker
+	 *  > size (string) (optional) - sets the width, can be: small, short, regular and large
+	 *
+     * @param array $args contains everything needed to build the field
+     */
+	public function addColorPicker($args) {
+		$default = array(
+		);
+		$args = array_merge($default, $args);
+		$args['type'] = 'colorpicker';
+		$args['size'] = 'small';
 		$this->addField($args);
 	}
 	
@@ -281,6 +302,7 @@ class AdminPage {
 		echo '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" rel="stylesheet" />';
 		echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>';
 		echo '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>';
+		echo '<script type="text/javascript" src="/'.PLUGINDIR.'/featured-blog-author/jscolor.js"></script>';
 		foreach($this->boxes as $box) {
 			if($box['type'] != 'title' AND $box['type'] != 'paragraph' AND $box['type'] != 'subtitle') {
 				if(!$this->table) {
@@ -311,7 +333,10 @@ class AdminPage {
 					$data = htmlspecialchars(stripslashes($data));
 					echo '<td><input type="text" class="'.$box['size'].'-text" name="'.$box['id'].'" id="'.$box['id'].'" value="'.$data.'" /> <span class="description">'.$box['desc'].'</span></td>';
 					break;
-					
+				case 'colorpicker':
+					$data = htmlspecialchars(stripslashes($data));
+					echo '<td><input type="text" class="'.$box['size'].'-text color" name="'.$box['id'].'" id="'.$box['id'].'" value="'.$data.'" style="width:60px;" /> <span class="description">'.$box['desc'].'</span></td>';
+					break;
 				case 'textarea':
 					$data = stripslashes($data);
 					echo '<td><textarea rows="'.$box['rows'].'" cols="'.$box['cols'].'" style="width:'.$box['width'].'px" name="'.$box['id'].'" id="'.$box['id'].'">'.$data.'</textarea> <br><span class="description">'.$box['desc'].'</span></td>';

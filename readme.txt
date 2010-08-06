@@ -4,13 +4,13 @@ Donate link: http://dongilbert.net/
 Tags: blogger, featured, author post, author box
 Requires at least: 2.7
 Tested up to: 3.0.1
-Stable tag: 1.2
+Stable tag: 1.3
 
-An upload-and-activate plugin that creates a author profile at the bottom of every post. Now with an admin panel for ease of use updating the background and border colors.
+Creates an author profile at the bottom of every post. The data is pulled from the about the author section in the users profile. Includes an admin panel for easy updating the background and border colors.
 
 == Description ==
 
-An upload-and-activate plugin that creates a author profile at the bottom of every post. Now with an admin panel for ease of use updating the background and border colors.
+Creates an author profile at the bottom of every post. The data is pulled from the about the author section in the users profile. Includes an admin panel for easy updating the background and border colors.
 
 == Installation ==
 
@@ -31,8 +31,14 @@ This should result in the following file structure:
         - featured-bloggers
             | readme.txt
             | screenshot1.png
+            | screenshot2.png
             | featured-blog-authors.php
-            | adminpage.class.php`
+            | adminpage.class.php
+            | jscolor.js
+            | cross.gif
+            | hv.png
+            | hs.png
+            | arrow,gif`
 
 Then just visit your admin area and activate the plugin.
 
@@ -49,8 +55,12 @@ None yet!
 == Screenshots ==
 
 1. How the plugin appears on posts/pages.
+2. Admin Page
 
 == ChangeLog ==
+**Version 1.3**
+
+* Added JS Colorpicker to Admin Page
 
 **Version 1.2**
 
